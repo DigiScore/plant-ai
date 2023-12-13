@@ -1,4 +1,5 @@
 import sys
+from threading import Lock, Thread
 
 from PySide6 import QtWidgets
 
@@ -10,6 +11,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self) -> None:
         super(MainWindow, self).__init__()
         self.setupUi(self)
+
+        self.lock = Lock()
 
         self.threads = [SendOscSignalThread('plant1'),
                         SendOscSignalThread('plant2'),
@@ -24,6 +27,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.start_pause_button.clicked.connect(self.start_pause_button_clicked)
 
         self.plant1_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 0))
+        self.plant2_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 1))
+        self.plant3_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 2))
+        self.plant4_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 3))
+        self.plant5_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 4))
+        self.plant6_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 5))
 
     def checkbox_changed(self, state: int, number: int) -> None:
         self.threads[number].running = False if state == 0 else True
@@ -35,8 +43,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.start_pause_button.setText("Start")
 
-        for plant in self.threads:
-            plant.running = self.running
+        with self.lock:
+            for plant in self.threads:
+                plant.running = self.running
 
 
 if __name__ == "__main__":
