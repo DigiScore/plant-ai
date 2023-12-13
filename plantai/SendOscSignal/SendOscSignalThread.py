@@ -27,9 +27,10 @@ class SendOscSignalThread(Thread):
             if self.running and self.checked:
                 osc_sender = udp_client.UDPClient("localhost", 2222)
                 msg = osc_message_builder.OscMessageBuilder(address=f"/{self.name}")
-                msg.add_arg(random.choice(self.mock_data))
+                mock_data_to_send = random.choice(self.mock_data)
+                for mock in mock_data_to_send:
+                    msg.add_arg(mock)
                 osc_sender.send(msg.build())
-                print(msg)
             if self.stop_thread:
                 break
             time.sleep(self.seconds)
