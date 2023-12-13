@@ -2,6 +2,8 @@ import time
 import csv
 import random
 from threading import Thread
+from pythonosc import udp_client
+from pythonosc import osc_message_builder
 
 
 class SendOscSignalThread(Thread):
@@ -23,7 +25,11 @@ class SendOscSignalThread(Thread):
     def run(self) -> None:
         while True:
             if self.running and self.checked:
-                print(f'{self.name}, {random.choice(self.mock_data)}')
+                osc_sender = udp_client.UDPClient("localhost", 2222)
+                msg = osc_message_builder.OscMessageBuilder(address=f"/{self.name}")
+                msg.add_arg(random.choice(self.mock_data))
+                osc_sender.send(msg.build())
+                print(msg)
             if self.stop_thread:
                 break
             time.sleep(self.seconds)
