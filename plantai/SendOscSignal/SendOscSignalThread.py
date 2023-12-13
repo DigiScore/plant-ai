@@ -11,6 +11,7 @@ class SendOscSignalThread(Thread):
         self.running = False
         self.checked = True
         self.name = name
+        self.stop_thread = False
 
         self.mock_data = []
 
@@ -23,4 +24,6 @@ class SendOscSignalThread(Thread):
         while True:
             if self.running and self.checked:
                 print(f'{self.name}, {random.choice(self.mock_data)}')
+            if self.stop_thread:
+                break
             time.sleep(self.seconds)

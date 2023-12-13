@@ -54,6 +54,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for plant in self.threads:
             plant.running = self.running
 
+    def closeEvent(self, event):
+        for plant in self.threads:
+            plant.stop_thread = True
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
