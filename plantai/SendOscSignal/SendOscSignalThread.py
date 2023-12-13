@@ -1,6 +1,6 @@
 import time
 import csv
-from pathlib import Path
+import random
 from threading import Thread
 
 
@@ -22,7 +22,5 @@ class SendOscSignalThread(Thread):
     def run(self) -> None:
         while True:
             if self.running and self.checked:
-                print(f'running {self.name}')
-            else:
-                print(f'paused {self.name}')
+                print(f'{self.name}, {random.choice(self.mock_data)}')
             time.sleep(self.seconds)
