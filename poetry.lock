@@ -52,6 +52,17 @@ files = [
 shiboken6 = "6.6.1"
 
 [[package]]
+name = "python-osc"
+version = "1.8.3"
+description = "Open Sound Control server and client implementations in pure Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python-osc-1.8.3.tar.gz", hash = "sha256:a5ce1ba56c8d82df51cb3f2946b5dd33a70522791acc4b8564e62d2b20ad9caa"},
+    {file = "python_osc-1.8.3-py3-none-any.whl", hash = "sha256:6fa7e5cf7690057712c26e5f67a747126e6a5f481a40792aad0f25ac3edee815"},
+]
+
+[[package]]
 name = "shiboken6"
 version = "6.6.1"
 description = "Python/C++ bindings helper module"
@@ -67,4 +78,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.12,<3.13"
-content-hash = "502846698f096ed696ffe43a373703064a755c363b6f48ef66c125c5071e5f6a"
+content-hash = "20d05df0deca573acdbf6be4eea997d1c779e03b7cc5ad748b5ae6be76ef8ad5"
