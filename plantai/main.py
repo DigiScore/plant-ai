@@ -12,8 +12,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__()
         self.setupUi(self)
 
-        self.lock = Lock()
-
         self.threads = [SendOscSignalThread('plant1'),
                         SendOscSignalThread('plant2'),
                         SendOscSignalThread('plant3'),
@@ -33,8 +31,18 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.plant5_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 4))
         self.plant6_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 5))
 
+        self.plant1_sb.valueChanged.connect(lambda i: self.spinbox_changed(i, 0))
+        self.plant2_sb.valueChanged.connect(lambda i: self.spinbox_changed(i, 1))
+        self.plant3_sb.valueChanged.connect(lambda i: self.spinbox_changed(i, 2))
+        self.plant4_sb.valueChanged.connect(lambda i: self.spinbox_changed(i, 3))
+        self.plant5_sb.valueChanged.connect(lambda i: self.spinbox_changed(i, 4))
+        self.plant6_sb.valueChanged.connect(lambda i: self.spinbox_changed(i, 5))
+
     def checkbox_changed(self, state: int, number: int) -> None:
         self.threads[number].running = False if state == 0 else True
+
+    def spinbox_changed(self, spinbox: int, number: int) -> None:
+        self.threads[number].seconds = spinbox
 
     def start_pause_button_clicked(self) -> None:
         self.running = not self.running
@@ -43,9 +51,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.start_pause_button.setText("Start")
 
-        with self.lock:
-            for plant in self.threads:
-                plant.running = self.running
+        for plant in self.threads:
+            plant.running = self.running
 
 
 if __name__ == "__main__":
