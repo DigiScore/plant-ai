@@ -157,6 +157,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.gridLayout)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        QWidget.setTabOrder(self.plant1_sb, self.plant1_cb)
+        QWidget.setTabOrder(self.plant1_cb, self.plant2_sb)
+        QWidget.setTabOrder(self.plant2_sb, self.plant2_cb)
+        QWidget.setTabOrder(self.plant2_cb, self.plant3_sb)
+        QWidget.setTabOrder(self.plant3_sb, self.plant3_cb)
+        QWidget.setTabOrder(self.plant3_cb, self.plant4_sb)
+        QWidget.setTabOrder(self.plant4_sb, self.plant4_cb)
+        QWidget.setTabOrder(self.plant4_cb, self.plant5_sb)
+        QWidget.setTabOrder(self.plant5_sb, self.plant5_cb)
+        QWidget.setTabOrder(self.plant5_cb, self.plant6_sb)
+        QWidget.setTabOrder(self.plant6_sb, self.plant6_cb)
+        QWidget.setTabOrder(self.plant6_cb, self.start_pause_button)
 
         self.retranslateUi(MainWindow)
 

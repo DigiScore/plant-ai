@@ -229,6 +229,21 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>plant1_sb</tabstop>
+  <tabstop>plant1_cb</tabstop>
+  <tabstop>plant2_sb</tabstop>
+  <tabstop>plant2_cb</tabstop>
+  <tabstop>plant3_sb</tabstop>
+  <tabstop>plant3_cb</tabstop>
+  <tabstop>plant4_sb</tabstop>
+  <tabstop>plant4_cb</tabstop>
+  <tabstop>plant5_sb</tabstop>
+  <tabstop>plant5_cb</tabstop>
+  <tabstop>plant6_sb</tabstop>
+  <tabstop>plant6_cb</tabstop>
+  <tabstop>start_pause_button</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
