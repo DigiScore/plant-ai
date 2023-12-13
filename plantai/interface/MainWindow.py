@@ -16,16 +16,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGridLayout, QHBoxLayout,
-    QLabel, QLineEdit, QMainWindow, QPushButton,
-    QSizePolicy, QSpacerItem, QWidget)
+    QLabel, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QSpinBox, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(243, 265)
-        MainWindow.setMinimumSize(QSize(200, 265))
-        MainWindow.setMaximumSize(QSize(243, 308))
+        MainWindow.resize(288, 265)
+        MainWindow.setMinimumSize(QSize(250, 265))
+        MainWindow.setMaximumSize(QSize(288, 344))
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -41,12 +41,6 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
 
-        self.plant3_ms = QLineEdit(self.centralwidget)
-        self.plant3_ms.setObjectName(u"plant3_ms")
-        self.plant3_ms.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.plant3_ms, 2, 1, 1, 1)
-
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
 
@@ -56,22 +50,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addItem(self.verticalSpacer, 6, 1, 1, 1)
 
-        self.plant2_cb = QCheckBox(self.centralwidget)
-        self.plant2_cb.setObjectName(u"plant2_cb")
-        self.plant2_cb.setChecked(True)
-
-        self.gridLayout.addWidget(self.plant2_cb, 1, 2, 1, 1)
-
         self.label_4 = QLabel(self.centralwidget)
         self.label_4.setObjectName(u"label_4")
 
         self.gridLayout.addWidget(self.label_4, 3, 0, 1, 1)
-
-        self.plant1_ms = QLineEdit(self.centralwidget)
-        self.plant1_ms.setObjectName(u"plant1_ms")
-        self.plant1_ms.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.plant1_ms, 0, 1, 1, 1)
 
         self.plant6_cb = QCheckBox(self.centralwidget)
         self.plant6_cb.setObjectName(u"plant6_cb")
@@ -79,28 +61,10 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.plant6_cb, 5, 2, 1, 1)
 
-        self.plant5_ms = QLineEdit(self.centralwidget)
-        self.plant5_ms.setObjectName(u"plant5_ms")
-        self.plant5_ms.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.plant5_ms, 4, 1, 1, 1)
-
         self.label_5 = QLabel(self.centralwidget)
         self.label_5.setObjectName(u"label_5")
 
         self.gridLayout.addWidget(self.label_5, 4, 0, 1, 1)
-
-        self.plant2_ms = QLineEdit(self.centralwidget)
-        self.plant2_ms.setObjectName(u"plant2_ms")
-        self.plant2_ms.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.plant2_ms, 1, 1, 1, 1)
-
-        self.plant4_ms = QLineEdit(self.centralwidget)
-        self.plant4_ms.setObjectName(u"plant4_ms")
-        self.plant4_ms.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
-
-        self.gridLayout.addWidget(self.plant4_ms, 3, 1, 1, 1)
 
         self.label_2 = QLabel(self.centralwidget)
         self.label_2.setObjectName(u"label_2")
@@ -141,11 +105,53 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addWidget(self.start_pause_button, 7, 1, 1, 1)
 
-        self.plant6_ms = QLineEdit(self.centralwidget)
-        self.plant6_ms.setObjectName(u"plant6_ms")
-        self.plant6_ms.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.plant2_cb = QCheckBox(self.centralwidget)
+        self.plant2_cb.setObjectName(u"plant2_cb")
+        self.plant2_cb.setChecked(True)
 
-        self.gridLayout.addWidget(self.plant6_ms, 5, 1, 1, 1)
+        self.gridLayout.addWidget(self.plant2_cb, 1, 2, 1, 1)
+
+        self.plant1_sb = QSpinBox(self.centralwidget)
+        self.plant1_sb.setObjectName(u"plant1_sb")
+        self.plant1_sb.setMaximum(1000)
+        self.plant1_sb.setValue(10)
+
+        self.gridLayout.addWidget(self.plant1_sb, 0, 1, 1, 1)
+
+        self.plant2_sb = QSpinBox(self.centralwidget)
+        self.plant2_sb.setObjectName(u"plant2_sb")
+        self.plant2_sb.setMaximum(1000)
+        self.plant2_sb.setValue(10)
+
+        self.gridLayout.addWidget(self.plant2_sb, 1, 1, 1, 1)
+
+        self.plant3_sb = QSpinBox(self.centralwidget)
+        self.plant3_sb.setObjectName(u"plant3_sb")
+        self.plant3_sb.setMaximum(1000)
+        self.plant3_sb.setValue(10)
+
+        self.gridLayout.addWidget(self.plant3_sb, 2, 1, 1, 1)
+
+        self.plant4_sb = QSpinBox(self.centralwidget)
+        self.plant4_sb.setObjectName(u"plant4_sb")
+        self.plant4_sb.setMaximum(1000)
+        self.plant4_sb.setValue(10)
+
+        self.gridLayout.addWidget(self.plant4_sb, 3, 1, 1, 1)
+
+        self.plant5_sb = QSpinBox(self.centralwidget)
+        self.plant5_sb.setObjectName(u"plant5_sb")
+        self.plant5_sb.setMaximum(1000)
+        self.plant5_sb.setValue(10)
+
+        self.gridLayout.addWidget(self.plant5_sb, 4, 1, 1, 1)
+
+        self.plant6_sb = QSpinBox(self.centralwidget)
+        self.plant6_sb.setObjectName(u"plant6_sb")
+        self.plant6_sb.setMaximum(1000)
+        self.plant6_sb.setValue(10)
+
+        self.gridLayout.addWidget(self.plant6_sb, 5, 1, 1, 1)
 
 
         self.horizontalLayout.addLayout(self.gridLayout)
@@ -160,16 +166,10 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Plant AI", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Plant 3 seconds", None))
-        self.plant3_ms.setText(QCoreApplication.translate("MainWindow", u"10", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Plant 1 seconds", None))
-        self.plant2_cb.setText("")
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Plant 4 seconds", None))
-        self.plant1_ms.setText(QCoreApplication.translate("MainWindow", u"10", None))
         self.plant6_cb.setText("")
-        self.plant5_ms.setText(QCoreApplication.translate("MainWindow", u"10", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Plant 5 seconds", None))
-        self.plant2_ms.setText(QCoreApplication.translate("MainWindow", u"10", None))
-        self.plant4_ms.setText(QCoreApplication.translate("MainWindow", u"10", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Plant 2 seconds", None))
         self.plant5_cb.setText("")
         self.plant1_cb.setText("")
@@ -177,6 +177,6 @@ class Ui_MainWindow(object):
         self.plant4_cb.setText("")
         self.plant3_cb.setText("")
         self.start_pause_button.setText(QCoreApplication.translate("MainWindow", u"Start", None))
-        self.plant6_ms.setText(QCoreApplication.translate("MainWindow", u"10", None))
+        self.plant2_cb.setText("")
     # retranslateUi
 
