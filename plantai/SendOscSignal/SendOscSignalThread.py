@@ -3,13 +3,14 @@ from threading import Thread
 
 
 class SendOscSignalThread(Thread):
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         Thread.__init__(self)
-        self.seconds = 1
+        self.seconds = 10
         self.running = False
+        self.name = name
 
-    def run(self):
+    def run(self) -> None:
         while True:
             if self.running:
-                pass
+                print('running')
             time.sleep(self.seconds)

@@ -11,10 +11,6 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super(MainWindow, self).__init__()
         self.setupUi(self)
 
-        self.running = False
-        # start
-        self.start_pause_button.clicked.connect(self.start_pause_button_clicked)
-
         self.threads = [SendOscSignalThread('plant1'),
                         SendOscSignalThread('plant2'),
                         SendOscSignalThread('plant3'),
@@ -24,7 +20,15 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         for plant in self.threads:
             plant.start()
 
-    def start_pause_button_clicked(self):
+        self.running = False
+        self.start_pause_button.clicked.connect(self.start_pause_button_clicked)
+
+        self.plant1_cb.stateChanged.connect(lambda i: self.checkbox_changed(i, 0))
+
+    def checkbox_changed(self, state: int, number: int) -> None:
+        self.threads[number].running = False if state == 0 else True
+
+    def start_pause_button_clicked(self) -> None:
         self.running = not self.running
         if self.running:
             self.start_pause_button.setText("Pause")
